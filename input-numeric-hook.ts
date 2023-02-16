@@ -302,6 +302,10 @@ export function useInputNumber<T = {}>(
     }
     // 末尾增加了一个小数点
     else if (nextText === `${text}.`) {
+      // 已经存在小数点了，就不做任何变更
+      if (text.indexOf('.') > -1) {
+        return;
+      }
       setText(nextText);
       setCurr(nextCursor);
     }
